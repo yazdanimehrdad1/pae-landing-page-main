@@ -1,33 +1,100 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import emailjs from '@emailjs/browser';
+import { useState, useRef } from 'react';
 
 const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    content: "hello@energyengineering.com",
+    content: "info@powerautomationengineering.com",
     subContent: "We'll respond within 24 hours"
   },
   {
     icon: Phone,
     title: "Call Us",
-    content: "+1 (555) 123-4567",
-    subContent: "Monday - Friday, 9AM - 6PM EST"
+    content: "+1 (662) 312-3277",
+    subContent: "Monday - Friday, 9AM - 6PM PST"
   },
   {
     icon: MapPin,
     title: "Visit Us",
-    content: "123 Innovation Drive",
-    subContent: "San Francisco, CA 94102"
+    content: "Columbia Street",
+    subContent: "San Diego, CA, 92101"
   }
 ];
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    // Map the form field names to state field names
+    const fieldMap: { [key: string]: string } = {
+      'from_name': 'name',
+      'from_email': 'email',
+      'company': 'company',
+      'message': 'message'
+    };
+    
+    setFormData(prev => ({
+      ...prev,
+      [fieldMap[name]]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setIsSubmitting(true);
+    
+    try {
+      const result = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('EmailJS Success:', result);
+      toast({
+        title: "Success!",
+        description: "Your message has been sent. We'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,27 +140,35 @@ const Contact = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
-              <form className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="name" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="from_name" className="text-sm font-medium text-gray-700">
                       Full Name
                     </Label>
                     <Input 
-                      id="name" 
+                      id="from_name"
+                      name="from_name"
                       placeholder="John Doe" 
                       className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="from_email" className="text-sm font-medium text-gray-700">
                       Email Address
                     </Label>
                     <Input 
-                      id="email" 
+                      id="from_email"
+                      name="from_email"
                       type="email" 
                       placeholder="john@company.com" 
                       className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
                 </div>
@@ -103,9 +178,13 @@ const Contact = () => {
                     Company/Organization
                   </Label>
                   <Input 
-                    id="company" 
+                    id="company"
+                    name="company"
                     placeholder="Your Company Name" 
                     className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    required
                   />
                 </div>
                 
@@ -114,19 +193,23 @@ const Contact = () => {
                     Project Details
                   </Label>
                   <Textarea 
-                    id="message" 
+                    id="message"
+                    name="message"
                     placeholder="Tell us about your energy project, timeline, and requirements..."
                     rows={5}
                     className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
+                  disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Send Message
-                  <Send className="ml-2 h-5 w-5" />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </CardContent>

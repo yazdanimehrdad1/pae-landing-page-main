@@ -59,30 +59,30 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Link 
-              key={index}
+              key={index} 
               to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
               className="block transform transition-all duration-300 hover:scale-105"
             >
               <Card 
                 className="group hover:shadow-2xl transition-all duration-300 border-0 shadow-lg hover:shadow-blue-500/10 h-full"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 relative">
-                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <service.icon className="h-8 w-8 text-white" />
-                    </div>
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto mb-4 relative">
+                  <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-center leading-relaxed">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                </div>
+                <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  {service.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-gray-600 text-center leading-relaxed">
+                  {service.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
             </Link>
           ))}
         </div>

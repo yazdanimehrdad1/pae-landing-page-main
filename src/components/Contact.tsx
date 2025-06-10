@@ -58,33 +58,75 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formRef.current) return;
-
     setIsSubmitting(true);
     
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      company: formData.company,
+      message: formData.message,
+      to_name: "Power Automation Engineering",
+      email: "info@powerautomationengineering.com",
+      reply_to: formData.email
+    };
+
+    console.log('Attempting to send email with:', {
+      serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      templateParams: templateParams
+    });
+
     try {
-      const result = await emailjs.sendForm(
+      const result = await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
+        templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      console.log('EmailJS Success:', result);
-      toast({
-        title: "Success!",
-        description: "Your message has been sent. We'll get back to you soon.",
+      console.log('EmailJS Response:', {
+        status: result.status,
+        text: result.text,
+        timestamp: new Date().toISOString()
       });
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-      });
+      if (result.status === 200) {
+        console.log('Email sent successfully. If you did not receive it, please check:', [
+          '1. Spam/Junk folder',
+          '2. EmailJS service configuration',
+          '3. Email template variables',
+          '4. Email service provider settings'
+        ].join('\n'));
+        
+        toast({
+          title: "Success!",
+          description: "Your message has been sent. We'll get back to you soon.",
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: ''
+        });
+      } else {
+        throw new Error(`Unexpected status code: ${result.status}`);
+      }
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('EmailJS Error Details:', {
+        error: error instanceof Error ? {
+          name: error.name,
+          message: error.message,
+          stack: error.stack
+        } : error,
+        timestamp: new Date().toISOString(),
+        formData: {
+          ...templateParams,
+          email: '***@***.com' // Masked for privacy
+        }
+      });
+      
       toast({
         title: "Error",
         description: "Failed to send message. Please try again later.",

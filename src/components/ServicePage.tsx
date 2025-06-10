@@ -1,12 +1,87 @@
 import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Gauge, Shield, Network, Settings, Cpu } from "lucide-react";
 import { services } from './Services';
+
+const serviceFeatures = {
+  "grid-integration": {
+    title: "Grid Integration",
+    features: [
+      {
+        icon: Gauge,
+        emoji: "🔍",
+        title: "Studies & Advisory",
+        description: "Conducting in-depth system impact studies, facility studies, and feasibility analyses for grid-scale PV, BESS, and microgrid interconnections."
+      },
+      {
+        icon: Shield,
+        emoji: "🛡️",
+        title: "Protection & Control",
+        description: "Sophisticated protection schemes and relay settings for grid-tied DERs, including programming of state-of-the-art protection relays."
+      },
+      {
+        icon: Network,
+        emoji: "🌐",
+        title: "Microgrid Operations",
+        description: "Advanced microgrid interconnection modes including seamless islanding, auto-synchronization, and black start functionality."
+      },
+      {
+        icon: Settings,
+        emoji: "📜",
+        title: "Compliance & Standards",
+        description: "IEEE standards and NERC reliability standards compliance, with comprehensive power system analyses and validation."
+      },
+      {
+        icon: Cpu,
+        emoji: "🔗",
+        title: "Communication Protocols",
+        description: "Integration of critical communication protocols for robust data exchange and seamless control system interoperability."
+      }
+    ]
+  },
+  "energy-storage-systems": {
+    title: "Energy Storage Systems",
+    features: [
+      {
+        icon: Gauge,
+        emoji: "📈",
+        title: "Feasibility & Optimization",
+        description: "Comprehensive techno-economic assessments for optimal BESS sizing and configuration."
+      },
+      {
+        icon: Settings,
+        emoji: "🏗️",
+        title: "Design & Engineering",
+        description: "Detailed electrical design for utility-scale BESS projects, including battery module and PCS integration."
+      },
+      {
+        icon: Cpu,
+        emoji: "🧠",
+        title: "Intelligent Control",
+        description: "Advanced Energy Management Systems configuration and battery scheduling algorithms implementation."
+      },
+      {
+        icon: Shield,
+        emoji: "🛡️",
+        title: "Protection & Reliability",
+        description: "Protection schemes for DC and AC coupled architectures, with comprehensive relay programming."
+      },
+      {
+        icon: Network,
+        emoji: "🔌",
+        title: "Grid Integration",
+        description: "Seamless integration with existing grid infrastructure and compliance with interconnection requirements."
+      }
+    ]
+  }
+};
 
 const ServicePage = () => {
   const { serviceId } = useParams();
   const service = services.find(s => s.title.toLowerCase().replace(/\s+/g, '-') === serviceId);
+  const serviceKey = serviceId as keyof typeof serviceFeatures;
+  const features = serviceFeatures[serviceKey]?.features || [];
 
   if (!service) {
     return (
@@ -18,7 +93,7 @@ const ServicePage = () => {
             <Link to="/">
               <Button variant="outline" className="gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Back to Home
+                Back to Services
               </Button>
             </Link>
           </CardContent>
@@ -40,7 +115,7 @@ const ServicePage = () => {
               className="gap-2 text-white border-white hover:bg-white/10 bg-transparent"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Home
+              Back to Services
             </Button>
           </Link>
         </div>
@@ -48,68 +123,50 @@ const ServicePage = () => {
         {/* Main Content */}
         <Card className="bg-white/95 backdrop-blur-sm">
           <CardContent className="p-8">
-            <div className="flex items-center gap-4 mb-6">
+            {/* Service Header */}
+            <div className="flex items-center gap-4 mb-12">
               <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.color}`}>
                 <Icon className="h-8 w-8 text-white" />
               </div>
-              <h1 className="text-4xl font-bold text-gray-900">{service.title}</h1>
+              <div>
+                <h1 className="text-4xl font-bold text-gray-900">{service.title}</h1>
+                <p className="text-xl text-gray-600 mt-2">{service.description}</p>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none">
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              
-              {/* Features Section */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h2>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <li className="flex items-start gap-2">
-                  <div className="h-2 w-2 mt-2 rounded-full bg-blue-500" />
-                  <span>Advanced monitoring and control systems</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="h-2 w-2 mt-2 rounded-full bg-blue-500" />
-                  <span>Real-time data analytics and reporting</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="h-2 w-2 mt-2 rounded-full bg-blue-500" />
-                  <span>Predictive maintenance capabilities</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="h-2 w-2 mt-2 rounded-full bg-blue-500" />
-                  <span>Scalable and modular architecture</span>
-                </li>
-              </ul>
-
-              {/* Benefits Section */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Benefits</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <Card className="bg-blue-50">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-blue-900 mb-2">Increased Efficiency</h3>
-                    <p className="text-blue-700">Optimize operations and reduce waste through intelligent automation.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-green-50">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-green-900 mb-2">Cost Savings</h3>
-                    <p className="text-green-700">Reduce operational costs and improve resource utilization.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-purple-50">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-purple-900 mb-2">Future-Ready</h3>
-                    <p className="text-purple-700">Stay ahead with scalable and adaptable solutions.</p>
-                  </CardContent>
-                </Card>
+            {/* Key Features */}
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Key Features</h2>
+              <div className="grid grid-cols-1 gap-6">
+                {features.map((feature, index) => (
+                  <Card key={index} className="border border-slate-200 hover:border-blue-300 transition-colors duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+                            <span className="text-2xl">{feature.emoji}</span>
+                          </div>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                          <p className="text-gray-600">{feature.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
+            </div>
 
-              {/* CTA Section */}
-              <div className="text-center mt-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-                <p className="text-gray-600 mb-6">Contact us to learn more about our {service.title} solutions.</p>
-                <Button className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-6 text-lg">
-                  Contact Us
-                </Button>
-              </div>
+            {/* CTA Section */}
+            <div className="text-center">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
+              <p className="text-gray-600 mb-6">
+                Contact us to learn more about our {service.title.toLowerCase()} solutions.
+              </p>
+              <Button className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-6 text-lg">
+                Contact Us
+              </Button>
             </div>
           </CardContent>
         </Card>

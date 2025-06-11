@@ -12,12 +12,16 @@ const Header = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="fixed w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/">
+            <Link to="/" onClick={scrollToTop}>
               <Logo />
             </Link>
           </div>
@@ -28,6 +32,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={item.path === '/' ? scrollToTop : undefined}
                 className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
               >
                 {item.name}

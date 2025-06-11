@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const concepts = [
   {
@@ -15,7 +16,7 @@ const concepts = [
       "Renewable energy integration",
       "Smart grid technologies"
     ],
-    image: "/engineering-concepts/engineering-concept.jpg"
+    image: "/engineering-concepts/engineering-concept-1.jpg"
   },
   {
     title: "Grid Integration Solutions",
@@ -48,144 +49,102 @@ const concepts = [
 
 const EngineeringConcept = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handlePrevious = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentSlide((prev) => (prev - 1 + concepts.length) % concepts.length);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentSlide((prev) => (prev + 1) % concepts.length);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
 
   useEffect(() => {
-    const timer = setInterval(handleNext, 8000);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % concepts.length);
+    }, 8000);
+
     return () => clearInterval(timer);
   }, []);
 
-  return (
-    <section className="relative py-16 mt-20 bg-gradient-to-br from-blue-900 via-blue-800 to-green-800 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
-      </div>
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % concepts.length);
+  };
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Navigation Buttons */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
+  const handlePrevious = () => {
+    setCurrentSlide((prev) => (prev - 1 + concepts.length) % concepts.length);
+  };
+
+  return (
+    <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Engineering
+            <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Concepts</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Explore the fundamental concepts that drive our innovative solutions in power automation and energy systems.
+          </p>
+        </div>
+
+        {/* Slideshow Section */}
+        <div className="mb-16 relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Text Content */}
+            <div className="relative p-8 md:p-12">
+              <div className="max-w-xl">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  {concepts[currentSlide].title}
+                </h3>
+                <p className="text-lg text-gray-200 mb-6">
+                  {concepts[currentSlide].description}
+                </p>
+                <div className="space-y-2">
+                  {concepts[currentSlide].keyPoints.map((point, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-green-400" />
+                      <span className="text-gray-200">{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Image Section */}
+            <div 
+              className="relative h-full min-h-[400px] lg:min-h-full"
+              style={{
+                backgroundImage: `url(${concepts[currentSlide].image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent lg:bg-gradient-to-l"></div>
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
           <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full bg-white/10 hover:bg-white/20 text-white"
+            variant="outline"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white"
             onClick={handlePrevious}
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
-        </div>
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
           <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full bg-white/10 hover:bg-white/20 text-white"
+            variant="outline"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white"
             onClick={handleNext}
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
-        </div>
 
-        {/* Slides Container */}
-        <div className="relative min-h-[500px]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="relative min-h-[500px] overflow-hidden">
-              {concepts.map((concept, index) => (
-                <div
-                  key={index}
-                  className={`transition-all duration-500 absolute inset-0 h-full ${
-                    index === currentSlide
-                      ? 'opacity-100 translate-x-0'
-                      : index < currentSlide
-                      ? 'opacity-0 -translate-x-full'
-                      : 'opacity-0 translate-x-full'
-                  }`}
-                  style={{
-                    transform: index === currentSlide ? 'none' : 'translateX(100%)',
-                    zIndex: index === currentSlide ? 1 : 0,
-                  }}
-                >
-                  <div className="h-full overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                      {concept.title}
-                    </h2>
-                    <div className="prose prose-lg prose-invert max-w-none">
-                      <p className="text-blue-100 mb-4 text-base md:text-lg">{concept.description}</p>
-                      <p className="text-blue-100 mb-4 text-base md:text-lg">Key aspects include:</p>
-                      <ul className="text-blue-100 space-y-2 text-base md:text-lg list-disc pl-5">
-                        {concept.keyPoints.map((point, idx) => (
-                          <li key={idx} className="text-blue-100">{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Images */}
-            <div className="relative h-[400px]">
-              {concepts.map((concept, index) => (
-                <div
-                  key={`image-${index}`}
-                  className={`absolute inset-0 transition-all duration-500 ${
-                    index === currentSlide
-                      ? 'opacity-100 translate-x-0'
-                      : index < currentSlide
-                      ? 'opacity-0 -translate-x-full'
-                      : 'opacity-0 translate-x-full'
-                  }`}
-                  style={{
-                    transform: index === currentSlide ? 'none' : 'translateX(100%)',
-                    zIndex: index === currentSlide ? 1 : 0,
-                  }}
-                >
-                  <div className="relative h-full rounded-xl overflow-hidden shadow-2xl">
-                    <img 
-                      src={concept.image}
-                      alt={concept.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Slide Indicators */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {concepts.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'bg-white w-6' 
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+                onClick={() => setCurrentSlide(index)}
+              />
+            ))}
           </div>
-        </div>
-
-        {/* Slide Indicators */}
-        <div className="flex justify-center mt-8 gap-2">
-          {concepts.map((_, index) => (
-            <button
-              key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? 'bg-white w-8' 
-                  : 'bg-white/50 hover:bg-white/70'
-              }`}
-              onClick={() => {
-                if (isAnimating) return;
-                setIsAnimating(true);
-                setCurrentSlide(index);
-                setTimeout(() => setIsAnimating(false), 500);
-              }}
-            />
-          ))}
         </div>
       </div>
     </section>

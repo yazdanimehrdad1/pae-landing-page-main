@@ -5,6 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import { services } from './Services';
 import GridIntegration from './services/GridIntegration';
 import EnergyStorage from './services/EnergyStorage';
+import SmartGridModernization from './services/SmartGridModernization';
+import MicrogridDevelopment from './services/MicrogridDevelopment';
 
 const ServicePage = () => {
   const { serviceId } = useParams();
@@ -48,8 +50,10 @@ const ServicePage = () => {
         {/* Main Content */}
         <Card className="bg-white/95 backdrop-blur-sm">
           <CardContent className="p-8">
-            {serviceId === 'grid-integration' && <GridIntegration service={service} />}
+            {serviceId === 'grid-integration-services' && <GridIntegration service={service} />}
             {serviceId === 'energy-storage-systems' && <EnergyStorage service={service} />}
+            {serviceId === 'smart-grid-modernization' && <SmartGridModernization service={service} />}
+            {serviceId === 'microgrid-development' && <MicrogridDevelopment service={service} />}
           </CardContent>
         </Card>
       </div>

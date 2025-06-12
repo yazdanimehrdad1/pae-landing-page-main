@@ -2,37 +2,32 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Gauge, Shield, Network, Settings, Cpu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
     icon: Gauge,
-    emoji: "🔍",
-    title: "Studies & Advisory",
-    description: "Conducting in-depth system impact studies, facility studies, and feasibility analyses for grid-scale PV, BESS, and microgrid interconnections."
+    emoji: "📊",
+    title: "Advanced Interconnection Studies & Strategic Advisory",
+    description: "Comprehensive system impact and facility studies for grid-scale PV, BESS, and microgrid interconnections, with expert guidance through ISO/RTO and utility interconnection processes."
   },
   {
     icon: Shield,
     emoji: "🛡️",
-    title: "Protection & Control",
-    description: "Sophisticated protection schemes and relay settings for grid-tied DERs, including programming of state-of-the-art protection relays."
-  },
-  {
-    icon: Network,
-    emoji: "🌐",
-    title: "Microgrid Operations",
-    description: "Advanced microgrid interconnection modes including seamless islanding, auto-synchronization, and black start functionality."
+    title: "Protection & Control System Design",
+    description: "Development of sophisticated protection schemes and relay settings for grid-tied DERs, including programming of state-of-the-art protection relays (SEL, GE, Siemens) to meet precise project requirements."
   },
   {
     icon: Settings,
-    emoji: "📜",
-    title: "Compliance & Standards",
-    description: "IEEE standards and NERC reliability standards compliance, with comprehensive power system analyses and validation."
+    emoji: "📈",
+    title: "Power System Analysis & Modeling",
+    description: "Detailed power flow, short circuit, and reactive power studies to prove compliance and optimize grid performance, ensuring reliable and efficient operation."
   },
   {
     icon: Cpu,
-    emoji: "🔗",
-    title: "Communication Protocols",
-    description: "Integration of critical communication protocols for robust data exchange and seamless control system interoperability."
+    emoji: "🔌",
+    title: "Communication Protocols & Interoperability",
+    description: "Deep expertise in Modbus, DNP3, and IEEE C37.118 (Synchrophasors) for robust data exchange and seamless control system integration across diverse grid components."
   }
 ];
 
@@ -91,9 +86,11 @@ const GridIntegration = ({ service }: GridIntegrationProps) => {
         <p className="text-gray-600 mb-6">
           Contact us to learn more about our {service.title.toLowerCase()} solutions.
         </p>
-        <Button className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-6 text-lg">
-          Contact Us
-        </Button>
+        <Link to="/contact">
+          <Button className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-6 text-lg">
+            Contact Us
+          </Button>
+        </Link>
       </div>
     </>
   );

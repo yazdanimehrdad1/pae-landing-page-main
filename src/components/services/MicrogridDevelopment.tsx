@@ -5,32 +5,32 @@ import { Link } from "react-router-dom";
 
 const features = [
   {
-    icon: Gauge,
-    emoji: "📊",
-    title: "BESS Feasibility, Sizing & Economic Optimization",
-    description: "Comprehensive techno-economic assessments to determine optimal BESS sizing, chemistry, and configuration for diverse applications, including peak shaving, frequency regulation, and demand charge management."
-  },
-  {
     icon: Settings,
     emoji: "🏗️",
-    title: "Advanced BESS Design & Engineering",
-    description: "Conceptual and detailed electrical design of utility-scale, commercial, and industrial BESS projects, with expert selection and integration of battery modules, power conversion systems, and balance-of-plant components."
-  },
-  {
-    icon: Cpu,
-    emoji: "🧠",
-    title: "Intelligent BESS Control & Management",
-    description: "Development and configuration of advanced Energy Management Systems (EMS) tailored for BESS, enabling multi-objective optimization and sophisticated battery scheduling algorithms for optimal dispatch."
+    title: "Microgrid Design, Operation & Control",
+    description: "Expert conceptual and detailed design of microgrid systems, integrating diverse energy resources such as PV, BESS, and traditional generators for optimal performance and reliability."
   },
   {
     icon: Network,
-    emoji: "🔌",
-    title: "Interconnection & Compliance",
-    description: "Seamless integration and interconnection compliance for BESS projects, addressing all technical and regulatory requirements for reliable grid integration and operation."
+    emoji: "⚡",
+    title: "Advanced Microgrid Functions",
+    description: "Specialized engineering for critical microgrid functionalities including black start, seamless islanding, and precise auto-synchronization for enhanced resilience and operational flexibility."
+  },
+  {
+    icon: Cpu,
+    emoji: "🎮",
+    title: "DER Controller Programming & Protection",
+    description: "Development and programming of sophisticated DER controllers to manage dispatch and coordination of various energy resources, with advanced protection schemes for system safety and rapid fault isolation."
+  },
+  {
+    icon: Gauge,
+    emoji: "📊",
+    title: "Strategic Consulting & Business Case Development",
+    description: "Comprehensive consulting services including optimized modeling, conceptual design, procurement strategies, and robust business case development to justify investment and ensure long-term success."
   }
 ];
 
-interface EnergyStorageProps {
+interface MicrogridDevelopmentProps {
   service: {
     title: string;
     description: string;
@@ -39,7 +39,7 @@ interface EnergyStorageProps {
   };
 }
 
-const EnergyStorage = ({ service }: EnergyStorageProps) => {
+const MicrogridDevelopment = ({ service }: MicrogridDevelopmentProps) => {
   const Icon = service.icon;
 
   return (
@@ -95,4 +95,4 @@ const EnergyStorage = ({ service }: EnergyStorageProps) => {
   );
 };
 
-export default EnergyStorage; 
+export default MicrogridDevelopment; 

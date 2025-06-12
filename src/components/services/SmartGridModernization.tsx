@@ -5,32 +5,26 @@ import { Link } from "react-router-dom";
 
 const features = [
   {
-    icon: Gauge,
-    emoji: "📊",
-    title: "BESS Feasibility, Sizing & Economic Optimization",
-    description: "Comprehensive techno-economic assessments to determine optimal BESS sizing, chemistry, and configuration for diverse applications, including peak shaving, frequency regulation, and demand charge management."
+    icon: Network,
+    emoji: "🏗️",
+    title: "Digital Infrastructure & Automation",
+    description: "Implementation of Advanced Metering Infrastructure (AMI), Meter Data Management Systems (MDMS), and load management solutions, along with SCADA and Advanced Distribution Management Systems (ADMS) for real-time grid operations."
   },
   {
-    icon: Settings,
-    emoji: "🏗️",
-    title: "Advanced BESS Design & Engineering",
-    description: "Conceptual and detailed electrical design of utility-scale, commercial, and industrial BESS projects, with expert selection and integration of battery modules, power conversion systems, and balance-of-plant components."
+    icon: Shield,
+    emoji: "🔒",
+    title: "IT/OT Convergence & Cybersecurity",
+    description: "Development of robust Industrial Foundation Networks (IFN) ensuring secure operational data and network performance, with proactive cybersecurity measures including gap assessments and managed services."
   },
   {
     icon: Cpu,
-    emoji: "🧠",
-    title: "Intelligent BESS Control & Management",
-    description: "Development and configuration of advanced Energy Management Systems (EMS) tailored for BESS, enabling multi-objective optimization and sophisticated battery scheduling algorithms for optimal dispatch."
-  },
-  {
-    icon: Network,
-    emoji: "🔌",
-    title: "Interconnection & Compliance",
-    description: "Seamless integration and interconnection compliance for BESS projects, addressing all technical and regulatory requirements for reliable grid integration and operation."
+    emoji: "📊",
+    title: "Advanced Analytics & Business Intelligence",
+    description: "Leveraging data analytics to derive actionable insights from smart grid components, optimizing performance, and enabling predictive maintenance for enhanced operational efficiency."
   }
 ];
 
-interface EnergyStorageProps {
+interface SmartGridModernizationProps {
   service: {
     title: string;
     description: string;
@@ -39,7 +33,7 @@ interface EnergyStorageProps {
   };
 }
 
-const EnergyStorage = ({ service }: EnergyStorageProps) => {
+const SmartGridModernization = ({ service }: SmartGridModernizationProps) => {
   const Icon = service.icon;
 
   return (
@@ -95,4 +89,4 @@ const EnergyStorage = ({ service }: EnergyStorageProps) => {
   );
 };
 
-export default EnergyStorage; 
+export default SmartGridModernization; 

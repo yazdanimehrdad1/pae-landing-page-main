@@ -1,41 +1,41 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Battery, Cpu, Globe, Lightbulb, Settings, Zap } from "lucide-react";
+import { Battery, Cpu, Globe, Lightbulb, Settings, Zap, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const services = [
   {
     icon: Zap,
-    title: "Grid Integration",
-    description: "Seamless integration of renewable energy sources into existing power grids with advanced control systems and optimization algorithms.",
+    title: "Grid Integration Services",
+    description: "Navigating the complexities of modern grid interconnection requires deep technical insight and practical experience. We provide specialized engineering services to ensure your generation assets, especially renewables and energy storage, are integrated seamlessly, reliably, and compliantly into the broader electrical network.",
     color: "from-yellow-500 to-orange-500"
   },
   {
     icon: Battery,
     title: "Energy Storage Systems",
-    description: "Design and implementation of cutting-edge battery storage solutions for grid stabilization and peak demand management.",
+    description: "Battery Energy Storage Systems (BESS) are pivotal for modernizing the grid, enhancing renewable energy utilization, and providing essential ancillary services. I offer end-to-end engineering solutions for BESS, ensuring optimal design, intelligent control, and maximum value generation for your projects.",
     color: "from-green-500 to-emerald-500"
   },
   {
-    icon: Cpu,
-    title: "Smart Grid Technologies",
-    description: "IoT-enabled smart grid solutions with real-time monitoring, predictive analytics, and automated demand response capabilities.",
+    icon: Network,
+    title: "Smart Grid Modernization",
+    description: "The smart grid represents a fundamental paradigm shift in power system management, leveraging digital technologies for two-way communication, real-time monitoring, and automated control. I provide the expertise to transform your grid into a proactive, self-healing, and intelligent network.",
     color: "from-blue-500 to-cyan-500"
   },
   {
     icon: Globe,
     title: "Microgrid Development",
-    description: "Complete microgrid design and deployment for residential, commercial, and industrial applications with islanding capabilities.",
+    description: "Microgrids are sophisticated, localized power systems designed for enhanced resilience and energy independence, capable of operating connected to the main grid or autonomously during disturbances. I engineer robust microgrid solutions tailored to your critical needs.",
     color: "from-purple-500 to-pink-500"
   },
   {
     icon: Lightbulb,
-    title: "Energy Efficiency",
+    title: "System Protection & Control",
     description: "Comprehensive energy audits and optimization strategies to maximize efficiency and reduce operational costs.",
     color: "from-indigo-500 to-blue-500"
   },
   {
     icon: Settings,
-    title: "System Optimization",
+    title: "Automation & Control & Visibility",
     description: "Advanced algorithms and machine learning solutions for optimal energy dispatch and resource allocation.",
     color: "from-teal-500 to-green-500"
   }
@@ -78,7 +78,7 @@ const Services = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 text-center leading-relaxed">
+                  <CardDescription className="text-gray-600 text-left leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardContent>

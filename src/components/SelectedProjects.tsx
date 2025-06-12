@@ -1,49 +1,49 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Battery, Factory, Building2, Lightbulb } from "lucide-react";
+import { Battery, Factory, Cpu, Monitor } from "lucide-react";
 
 const projects = [
   {
-    icon: Battery,
-    title: "Utility-Scale BESS Integration",
-    location: "California, USA",
-    description: "Successfully integrated a 100MW/400MWh Battery Energy Storage System into the California grid, providing frequency regulation and peak shaving capabilities.",
-    highlights: [
-      "Advanced control system implementation",
-      "NERC compliance verification",
-      "Grid interconnection studies"
-    ]
-  },
-  {
     icon: Factory,
-    title: "Industrial Microgrid Development",
-    location: "Texas, USA",
-    description: "Designed and implemented a resilient microgrid system for a manufacturing facility, enabling seamless islanding and reducing energy costs by 30%.",
+    title: "Advanced Microgrid Commissioning",
+    location: "",
+    description: "Designing and commissioning an advanced microgrid with seamless grid/island transitions, black start, and full protection coordination.",
     highlights: [
-      "Renewable integration",
-      "Load management system",
-      "Black start capability"
+      "Seamless grid/island transitions",
+      "Black start capability",
+      "Full protection coordination"
     ]
   },
   {
-    icon: Building2,
-    title: "Campus Energy Management",
-    location: "Massachusetts, USA",
-    description: "Developed a comprehensive energy management system for a university campus, integrating renewable sources and optimizing energy distribution.",
+    icon: Cpu,
+    title: "MV Switchgear Controls Integration",
+    location: "",
+    description: "Engineering and integrating MV switchgear controls with custom HMI and automated protection/monitoring.",
     highlights: [
-      "Smart grid implementation",
-      "Energy monitoring system",
-      "Demand response integration"
+      "Custom HMI development",
+      "Automated protection & monitoring",
+      "MV switchgear engineering"
     ]
   },
   {
-    icon: Lightbulb,
-    title: "Smart City Grid Modernization",
-    location: "Florida, USA",
-    description: "Led the grid modernization initiative for a smart city project, implementing advanced metering infrastructure and automated distribution systems.",
+    icon: Battery,
+    title: "Relay Programming & Controller Tuning",
+    location: "",
+    description: "Performing precision relay programming and controller tuning to optimize microgrid performance under dynamic operating modes.",
     highlights: [
-      "Distribution automation",
-      "Advanced metering infrastructure",
-      "Renewable integration"
+      "Precision relay programming",
+      "Controller tuning",
+      "Dynamic mode optimization"
+    ]
+  },
+  {
+    icon: Monitor,
+    title: "HMI & System Validation",
+    location: "",
+    description: "Developing intuitive HMI screens and performing full FAT/SAT to validate system control, alarms, and monitoring for live operation.",
+    highlights: [
+      "Intuitive HMI screens",
+      "Full FAT/SAT execution",
+      "Live system validation"
     ]
   }
 ];

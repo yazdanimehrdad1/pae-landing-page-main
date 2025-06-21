@@ -28,10 +28,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>hello@powerautomationeng.com</li>
-              <li>+1 (555) 123-4567</li>
-              <li>123 Innovation Drive</li>
-              <li>San Francisco, CA 94102</li>
+              <li>info@powerautomationeng.com</li>
+              <li>+1 (662) 312-3277</li>
+              <li>1970 Columbia Street</li>
+              <li>San Diego, CA 92101</li>
             </ul>
           </div>
         </div>

@@ -7,6 +7,8 @@ import GridIntegration from './services/GridIntegration';
 import EnergyStorage from './services/EnergyStorage';
 import SmartGridModernization from './services/SmartGridModernization';
 import MicrogridDevelopment from './services/MicrogridDevelopment';
+import Trainings from './services/Trainings';
+import ProtectionAutomationVisibility from './services/ProtectionAutomationVisibility';
 
 const ServicePage = () => {
   const { serviceId } = useParams();
@@ -57,7 +59,8 @@ const ServicePage = () => {
             {serviceId === 'energy-storage-systems' && <EnergyStorage service={service} />}
             {serviceId === 'smart-grid-modernization' && <SmartGridModernization service={service} />}
             {serviceId === 'microgrid-development' && <MicrogridDevelopment service={service} />}
-            {/* {serviceId === 'trainings' && <Trainings service={service} />} */}
+            {serviceId === 'protection-&-automation-&-visibility' && <ProtectionAutomationVisibility service={service} />}
+            {serviceId === 'trainings' && <Trainings service={service} />}
           </CardContent>
         </Card>
       </div>

@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { services } from './Services';
+import { services } from '@/data/services';
 import GridIntegration from './services/GridIntegration';
 import EnergyStorage from './services/EnergyStorage';
 import SmartGridModernization from './services/SmartGridModernization';
@@ -39,7 +39,10 @@ const ServicePage = () => {
           <Link to="/">
             <Button 
               variant="outline" 
-              className="gap-2 text-white border-white hover:bg-white/10 bg-transparent"
+              className={[
+                "gap-2 text-white border-white",
+                "hover:bg-white/10 bg-transparent"
+              ].join(' ')}
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Services
@@ -54,6 +57,7 @@ const ServicePage = () => {
             {serviceId === 'energy-storage-systems' && <EnergyStorage service={service} />}
             {serviceId === 'smart-grid-modernization' && <SmartGridModernization service={service} />}
             {serviceId === 'microgrid-development' && <MicrogridDevelopment service={service} />}
+            {/* {serviceId === 'trainings' && <Trainings service={service} />} */}
           </CardContent>
         </Card>
       </div>

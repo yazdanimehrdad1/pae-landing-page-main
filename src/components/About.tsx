@@ -27,10 +27,11 @@ const About = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-            Our team of expert engineers combines decades of experience in power systems 
-            with cutting-edge innovation to deliver solutions that shape the future of energy. 
-            We specialize in distributed energy resources, helping organizations transition 
-            to sustainable, efficient, and resilient power systems.
+            Our team of expert engineers combines decades of experience in power
+            systems with cutting-edge innovation to deliver solutions that shape
+            the future of energy. We specialize in distributed energy resources,
+            helping organizations transition to sustainable, efficient, and
+            resilient power systems.
           </p>
           
           {/* Our Expertise Section */}
@@ -44,7 +45,11 @@ const About = () => {
                   <Badge 
                     key={index} 
                     variant="secondary" 
-                    className="px-4 py-2 bg-gradient-to-r from-blue-100 to-green-100 text-gray-800 hover:from-blue-200 hover:to-green-200 transition-all duration-300 hover:scale-105 cursor-default"
+                    className={[
+                      "px-4 py-2 bg-gradient-to-r from-blue-100 to-green-100",
+                      "text-gray-800 hover:from-blue-200 hover:to-green-200",
+                      "transition-all duration-300 hover:scale-105 cursor-default"
+                    ].join(' ')}
                   >
                     {skill}
                   </Badge>
@@ -58,9 +63,10 @@ const About = () => {
             <CardContent className="p-6">
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-blue-100 leading-relaxed">
-                To accelerate the global transition to sustainable energy through innovative 
-                distributed energy resource solutions that are reliable, efficient, and accessible 
-                to communities worldwide.
+                To accelerate the global transition to sustainable 
+                energy through innovative distributed energy resource solutions 
+                that are reliable, efficient, and accessible to communities 
+                worldwide.
               </p>
             </CardContent>
           </Card>

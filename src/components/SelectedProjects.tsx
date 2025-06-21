@@ -58,8 +58,8 @@ const SelectedProjects = () => {
             <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Projects</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our portfolio of successful implementations that showcase our expertise 
-            in power automation and energy management solutions.
+            Explore our portfolio of successful implementations that showcase 
+            our expertise in power automation and energy management solutions.
           </p>
         </div>
 

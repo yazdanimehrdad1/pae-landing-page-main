@@ -29,6 +29,10 @@ const contactInfo = [
   }
 ];
 
+type InputOrTextAreaEvent = React.ChangeEvent<
+  HTMLInputElement | HTMLTextAreaElement
+>;
+
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,7 +44,7 @@ const Contact = () => {
     message: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: InputOrTextAreaEvent) => {
     const { name, value } = e.target;
     // Map the form field names to state field names
     const fieldMap: { [key: string]: string } = {
@@ -146,8 +150,9 @@ const Contact = () => {
             <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Your Energy Future?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Let's discuss how our distributed energy resource solutions can help you achieve 
-            your sustainability goals and optimize your energy infrastructure.
+            Let's discuss how our distributed energy resource solutions 
+            can help you achieve your sustainability goals and optimize your 
+            energy infrastructure.
           </p>
         </div>
         
@@ -249,7 +254,11 @@ const Contact = () => {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className={[
+                    "w-full bg-gradient-to-r from-blue-600 to-green-600",
+                    "hover:from-blue-700 hover:to-green-700 text-white py-3 text-lg",
+                    "font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  ].join(' ')}
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>

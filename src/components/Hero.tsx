@@ -20,8 +20,9 @@ const Hero = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-            Expert engineering services for distributed energy resources, renewable integration, 
-            and next-generation power systems that drive sustainable innovation.
+            Expert engineering services for distributed energy resources, 
+            renewable integration, and next-generation power systems that 
+            drive sustainable innovation.
           </p>
         </div>
       </div>

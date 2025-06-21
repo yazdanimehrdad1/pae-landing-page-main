@@ -6,9 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const concepts = [
   {
     title: "Understanding Power Systems",
-    description: `Power systems engineering is a complex field that requires deep understanding of electrical principles, 
-    system dynamics, and advanced control theory. Modern power grids are evolving into smart, 
-    interconnected networks that can adapt to changing demands and integrate renewable energy sources.`,
+    description: `Power systems engineering is a complex field that requires deep 
+    understanding of electrical principles, system dynamics, and advanced control 
+    theory. Modern power grids are evolving into smart, interconnected networks 
+    that can adapt to changing demands and integrate renewable energy sources.`,
     keyPoints: [
       "Power flow analysis and optimization",
       "Voltage and frequency control",
@@ -20,9 +21,10 @@ const concepts = [
   },
   {
     title: "Grid Integration Solutions",
-    description: `Grid integration is crucial for connecting renewable energy sources to existing power infrastructure. 
-    This involves sophisticated control systems, protection schemes, and communication protocols to ensure 
-    reliable and efficient power delivery.`,
+    description: `Grid integration is crucial for connecting renewable energy 
+    sources to existing power infrastructure. This involves sophisticated control 
+    systems, protection schemes, and communication protocols to ensure reliable 
+    and efficient power delivery.`,
     keyPoints: [
       "Renewable resource integration",
       "Grid stability analysis",
@@ -34,8 +36,9 @@ const concepts = [
   },
   {
     title: "Energy Storage Systems",
-    description: `Energy storage systems are becoming increasingly important in modern power grids. They provide 
-    flexibility, stability, and reliability while enabling greater integration of renewable energy sources.`,
+    description: `Energy storage systems are becoming increasingly important in 
+    modern power grids. They provide flexibility, stability, and reliability 
+    while enabling greater integration of renewable energy sources.`,
     keyPoints: [
       "Battery storage solutions",
       "System sizing and optimization",
@@ -75,7 +78,8 @@ const EngineeringConcept = () => {
             <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Concepts</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore the fundamental concepts that drive our innovative solutions in power automation and energy systems.
+            Explore the fundamental concepts that drive our innovative 
+            solutions in power automation and energy systems.
           </p>
         </div>
 
@@ -89,7 +93,10 @@ const EngineeringConcept = () => {
                   {concepts[currentSlide].title}
                 </h3>
                 <p className="text-lg text-gray-200 mb-6">
-                  {concepts[currentSlide].description}
+                  {
+                    concepts[currentSlide]
+                      .description
+                  }
                 </p>
                 <div className="space-y-2">
                   {concepts[currentSlide].keyPoints.map((point, idx) => (

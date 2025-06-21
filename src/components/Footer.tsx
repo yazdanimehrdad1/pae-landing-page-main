@@ -1,4 +1,3 @@
-
 import Logo from "./Logo";
 
 const Footer = () => {
@@ -11,7 +10,7 @@ const Footer = () => {
               <Logo textSize="lg" />
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Leading the future of distributed energy resources with innovative 
+              Leading the future of distributed energy resources with innovative
               engineering solutions for a sustainable tomorrow.
             </p>
           </div>

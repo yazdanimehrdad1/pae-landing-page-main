@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Gauge, Shield, Network, Settings, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ComponentType } from "react";
 
 const features = [
   {
@@ -35,7 +36,7 @@ interface MicrogridDevelopmentProps {
     title: string;
     description: string;
     color: string;
-    icon: any;
+    icon: ComponentType<{ className?: string }>;
   };
 }
 

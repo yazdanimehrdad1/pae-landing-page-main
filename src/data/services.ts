@@ -39,19 +39,28 @@ export const services: Service[] = [
   {
     icon: Network,
     title: "Smart Grid Modernization",
-    description: `The smart grid represents a fundamental paradigm shift in power system 
-    management, leveraging digital technologies for two-way communication, real-time monitoring, 
-    and automated control. I provide the expertise to transform your grid into a proactive, 
-    self-healing, and intelligent network.`,
+    description: `The smart grid represents a transformative evolution in power system management—moving beyond traditional one-way 
+    energy delivery to a dynamic, interactive, and intelligent infrastructure. By integrating advanced digital technologies, 
+    the smart grid enables two-way communication between utilities and consumers, real-time system visibility, 
+    distributed energy resource (DER) integration, and automated control at every level of the network. 
+    We provide the engineering expertise and technical leadership to help utilities and operators modernize their grid architecture 
+    into a resilient, self-healing, and data-driven ecosystem. Our solutions encompass adaptive protection schemes, 
+    advanced metering infrastructure (AMI), substation automation, and distributed control strategies—ensuring your grid 
+    is not only more reliable and efficient, but also prepared for the future of decarbonization, decentralization, and electrification.`,
     color: "from-blue-500 to-cyan-500"
   },
   {
     icon: Globe,
     title: "Microgrid Development",
-    description: `Microgrids are sophisticated, localized power systems designed for enhanced 
-    resilience and energy independence, capable of operating connected to the main grid or 
-    autonomously during disturbances. I engineer robust microgrid solutions tailored to your 
-    critical needs.`,
+    description: `Microgrids are advanced, localized energy systems designed to deliver enhanced reliability, 
+    energy security, and operational flexibility. They are capable of operating in parallel with the main utility grid or 
+    autonomously in islanded mode during grid outages or disturbances. A well-designed microgrid integrates distributed energy 
+    resources (DERs) such as solar PV, battery energy storage systems (BESS), diesel generators, and controllable loads under a 
+    centralized or hierarchical control architecture. We specialize in engineering and commissioning robust microgrid solutions 
+    tailored to your site-specific operational priorities—whether it’s uninterrupted power for critical infrastructure, 
+    renewable integration, demand-side optimization, or grid resiliency. Our services cover end-to-end design: 
+    from protection coordination, black start functionality, and seamless islanding/resynchronization 
+    logic to DER controller programming, HMI development, and energy management system (EMS) scheduling.`,
     color: "from-purple-500 to-pink-500"
   },
   {

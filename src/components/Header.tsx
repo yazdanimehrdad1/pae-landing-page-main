@@ -13,7 +13,7 @@ const Header = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const plusDasUrl = 'http://plusdas.powerautomationengineering.com/';
+  const plusDasUrl = 'http://136.115.89.60/';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -8,9 +8,12 @@ const Header = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
+    { name: 'Products', path: '/products' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const plusDasUrl = 'http://plusdas.powerautomationengineering.com/';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,7 +30,7 @@ const Header = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -38,6 +41,14 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            <a
+              href={plusDasUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-5 py-2 font-semibold text-white shadow-md shadow-cyan-500/30 transition-opacity duration-200 hover:opacity-90"
+            >
+              Try PlusDAS
+            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -75,6 +86,15 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
+              <a
+                href={plusDasUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-md bg-gradient-to-r from-cyan-500 to-emerald-500 px-3 py-2 text-base font-semibold text-white"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Try PlusDAS
+              </a>
             </div>
           </div>
         )}

@@ -114,4 +114,17 @@
   .animate-logo-fade-in {
     animation: logo-fade-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
+
+  @keyframes feature-progress {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  .animate-feature-progress {
+    animation: feature-progress 10s linear forwards;
+    transform-origin: left;
+  }
 }

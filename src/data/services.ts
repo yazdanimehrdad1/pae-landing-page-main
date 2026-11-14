@@ -31,7 +31,7 @@ export const services: Service[] = [
     icon: Battery,
     title: "Energy Storage Systems",
     description: `Battery Energy Storage Systems (BESS) are pivotal for modernizing the grid, 
-    enhancing renewable energy utilization, and providing essential ancillary services. I offer 
+    enhancing renewable energy utilization, and providing essential ancillary services. PAE offers
     end-to-end engineering solutions for BESS, ensuring optimal design, intelligent control, 
     and maximum value generation for your projects.`,
     color: "from-green-500 to-emerald-500"

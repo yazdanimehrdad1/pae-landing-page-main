@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
-const PLUS_DAS_URL = 'http://136.115.89.60/';
+const PLUS_DAS_URL = 'http://plusdas.powerautomationengineering.com/';
 const DEMO_EMAIL = 'demo@plusdas.dev';
 const DEMO_PASSWORD = 'demo-password';
 

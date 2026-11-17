@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import PlusDasDemoDialog from './PlusDasDemoDialog';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,8 +13,6 @@ const Header = () => {
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
-
-  const plusDasUrl = 'http://136.115.89.60/';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41,14 +40,14 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <a
-              href={plusDasUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-5 py-2 font-semibold text-white shadow-md shadow-cyan-500/30 transition-opacity duration-200 hover:opacity-90"
-            >
-              Try PlusDAS
-            </a>
+            <PlusDasDemoDialog>
+              <button
+                type="button"
+                className="rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-5 py-2 font-semibold text-white shadow-md shadow-cyan-500/30 transition-opacity duration-200 hover:opacity-90"
+              >
+                Try PlusDAS
+              </button>
+            </PlusDasDemoDialog>
           </nav>
 
           {/* Mobile menu button */}
@@ -86,15 +85,14 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <a
-                href={plusDasUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-md bg-gradient-to-r from-cyan-500 to-emerald-500 px-3 py-2 text-base font-semibold text-white"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Try PlusDAS
-              </a>
+              <PlusDasDemoDialog onContinue={() => setIsMenuOpen(false)}>
+                <button
+                  type="button"
+                  className="block w-full text-left rounded-md bg-gradient-to-r from-cyan-500 to-emerald-500 px-3 py-2 text-base font-semibold text-white"
+                >
+                  Try PlusDAS
+                </button>
+              </PlusDasDemoDialog>
             </div>
           </div>
         )}
